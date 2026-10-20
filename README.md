@@ -1,0 +1,230 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gustavo Morais</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #ffb6d5 0%, #ffffff 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: #000000;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .foto-area {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #foto {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    .nome {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 4px 0;
+    }
+
+    .subtitulo {
+      font-size: 14px;
+      color: #444;
+      margin: 0;
+    }
+
+    button {
+      display: block;
+      width: 65%;
+      margin: 0 auto 10px auto;
+      padding: 9px;
+      font-size: 15px;
+      font-family: inherit;
+      background-color: #eeeeee;
+      border: 1px solid #000000;
+      border-radius: 30px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    button:hover {
+      background-color: #dddddd;
+    }
+
+    .caixa-certificados {
+      display: block;
+      width: 65%;
+      margin: 0 auto 10px auto;
+      padding: 9px;
+      font-size: 15px;
+      font-family: inherit;
+      background-color: #f5f5f5;
+      border: 1px solid #999999;
+      border-radius: 30px;
+      color: #666666;
+      cursor: default;
+      text-align: center;
+    }
+
+    .tela {
+      display: none;
+    }
+
+    .tela.ativa {
+      display: block;
+    }
+
+    .texto-sobre {
+      font-size: 15px;
+      line-height: 1.6;
+      border: 1px solid #cccccc;
+      padding: 15px;
+      background-color: #fafafa;
+      border-radius: 10px;
+    }
+
+    /* Grade 2x2 para os cards */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .card {
+      width: calc(50% - 7.5px); /* duas colunas com o gap de 15px */
+      border: 1px solid #000000;
+      padding: 22px;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+
+    .card p {
+      font-size: 15px;
+      margin: 0 0 12px 0;
+    }
+
+    .card span {
+      font-size: 13px;
+      color: #444;
+    }
+
+    .voltar {
+      margin-top: 15px;
+      width: 40%;
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- FOTO -->
+  <div class="foto-area">
+    <img
+      id="foto"
+      src="https://i.ibb.co/wZR6ZFjm/Whats-App-Image-2026-10-19-at-19-53-26.jpg"
+      alt="Gustavo Morais"
+      title="Clique na foto para voltar ao início"
+    >
+    <p class="nome">Gustavo morais lindozo sousa</p>
+    <p class="subtitulo">Desenvolvedor Front-end no Programa Trilhas</p>
+  </div>
+
+  <!-- TELA INICIAL -->
+  <div class="tela ativa" id="telaInicio">
+    <button onclick="mostrarTela('sobre')">Sobre mim</button>
+    <button onclick="mostrarTela('projetos')">Meus projetos</button>
+    <button class="caixa-certificados">Meus certificados</button>
+  </div>
+
+  <!-- TELA SOBRE MIM -->
+  <div class="tela" id="telaSobre">
+    <p class="texto-sobre">
+      Desenvolvedor de front-end do programa Trilha. Sou um desenvolvedor de front-end
+      apaixonado por criar experiências digitais envolventes e acessíveis. Com uma sólida
+      formação em design e programação, dedico-me a transformar ideias em interfaces
+      intuitivas e funcionais que encantam os usuários.
+    </p>
+    <button class="voltar" onclick="mostrarTela('inicio')">Voltar</button>
+  </div>
+
+  <!-- TELA MEUS PROJETOS -->
+  <div class="tela" id="telaProjetos">
+    <div class="cards">
+
+      <div class="card">
+        <h3>Projeto 1</h3>
+        <p>Página feita com HTML e CSS.</p>
+        <span>HTML / CSS</span>
+      </div>
+
+      <div class="card">
+        <h3>Projeto 2</h3>
+        <p>Site com JavaScript básico.</p>
+        <span>JavaScript</span>
+      </div>
+
+      <div class="card">
+        <h3>Projeto 3</h3>
+        <p>Layout responsivo simples.</p>
+        <span>HTML / CSS</span>
+      </div>
+
+      <div class="card">
+        <h3>Projeto 4</h3>
+        <p>Formulário com validação.</p>
+        <span>JavaScript</span>
+      </div>
+
+    </div>
+    <button class="voltar" onclick="mostrarTela('inicio')">Voltar</button>
+  </div>
+
+</div>
+
+<script>
+  // Mostrar a tela escolhida
+  function mostrarTela(nome) {
+    document.getElementById('telaInicio').classList.remove('ativa');
+    document.getElementById('telaSobre').classList.remove('ativa');
+    document.getElementById('telaProjetos').classList.remove('ativa');
+
+    if (nome === 'inicio') {
+      document.getElementById('telaInicio').classList.add('ativa');
+    } else if (nome === 'sobre') {
+      document.getElementById('telaSobre').classList.add('ativa');
+    } else if (nome === 'projetos') {
+      document.getElementById('telaProjetos').classList.add('ativa');
+    }
+  }
+
+  // Clicar na foto volta para o início
+  document.getElementById('foto').onclick = function() {
+    mostrarTela('inicio');
+  };
+</script>
+
+</body>
+</html>
